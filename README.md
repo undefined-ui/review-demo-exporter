@@ -9,7 +9,7 @@ Exports notes to JSON. Each note has exactly four fields:
 | `id`         | int    |
 | `title`      | string |
 | `body`       | string |
-| `created_at` | ISO-8601 UTC string |
+| `createdAt` | ISO-8601 UTC string |
 
 Downstream: [review-demo-consumer](../review-demo-consumer) reads this output.
 

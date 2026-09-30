@@ -12,7 +12,7 @@ class SerializeNoteTests(unittest.TestCase):
     def test_serialized_note_has_exact_fields(self):
         note = Note(7, "t", "b", datetime(2026, 1, 2, 3, 4, tzinfo=timezone.utc))
         data = serialize_note(note)
-        self.assertEqual(set(data), {"id", "title", "body", "created_at"})
+        self.assertEqual(set(data), {"id", "title", "body", "createdAt"})
         self.assertEqual(set(data), set(EXPORT_FIELDS))
 
     def test_field_types(self):
@@ -20,12 +20,12 @@ class SerializeNoteTests(unittest.TestCase):
         self.assertIsInstance(data["id"], int)
         self.assertIsInstance(data["title"], str)
         self.assertIsInstance(data["body"], str)
-        self.assertIsInstance(data["created_at"], str)
+        self.assertIsInstance(data["createdAt"], str)
 
-    def test_created_at_is_iso_utc(self):
+    def test_createdAt_is_iso_utc(self):
         note = Note(1, "t", "b", datetime(2026, 1, 2, 3, 4, tzinfo=timezone.utc))
-        self.assertEqual(serialize_note(note)["created_at"], "2026-01-02T03:04:00+00:00")
-        self.assertEqual(datetime.fromisoformat(serialize_note(note)["created_at"]), note.created_at)
+        self.assertEqual(serialize_note(note)["createdAt"], "2026-01-02T03:04:00+00:00")
+        self.assertEqual(datetime.fromisoformat(serialize_note(note)["createdAt"]), note.createdAt)
 
 
 class ExportNotesTests(unittest.TestCase):
