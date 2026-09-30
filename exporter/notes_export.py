@@ -4,7 +4,7 @@ Output contract: a JSON array of objects with exactly these fields:
     id          integer
     title       string
     body        string
-    created_at  ISO-8601 timestamp string (UTC)
+    createdAt  ISO-8601 timestamp string (UTC)
 """
 
 from __future__ import annotations
@@ -14,7 +14,7 @@ import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
-EXPORT_FIELDS = ("id", "title", "body", "created_at")
+EXPORT_FIELDS = ("id", "title", "body", "createdAt")
 
 
 @dataclass(frozen=True)
@@ -22,7 +22,7 @@ class Note:
     id: int
     title: str
     body: str
-    created_at: datetime
+    createdAt: datetime
 
 
 def serialize_note(note: Note) -> dict:
@@ -31,7 +31,7 @@ def serialize_note(note: Note) -> dict:
         "id": note.id,
         "title": note.title,
         "body": note.body,
-        "created_at": note.created_at.astimezone(timezone.utc).isoformat(),
+        "createdAt": note.createdAt.astimezone(timezone.utc).isoformat(),
     }
 
 
